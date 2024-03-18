@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Admin = require("../models/admin");
 const passport = require("../auth/localAuth");
+
 //auth
 exports.connexion = passport.authenticate("local", {
   successReturnToOrRedirect: "/",

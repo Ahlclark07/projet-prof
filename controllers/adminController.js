@@ -17,4 +17,8 @@ exports.deconnexion = function (req, res, next) {
   });
 };
 
-//
+// videos
+
+// clients
+
+// articles

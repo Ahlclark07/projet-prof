@@ -14,8 +14,8 @@ router.get("/desactiverclient/{id}", adminController.desactiverClient);
 //Vidéos
 router.get("/videos", adminController.getVideos);
 router.get("/formulairevideo", adminController.afficherFormulaireVideo);
-router.post("/ajoutervideo", adminController.ajoutervideo);
-router.get("/supprimervideo/{id}", adminController.supprimervideo);
+router.post("/ajoutervideo", adminController.ajouterVideo);
+router.get("/supprimervideo/{id}", adminController.supprimerVideo);
 
 //articles
 router.get("/articles", adminController.getArticles);

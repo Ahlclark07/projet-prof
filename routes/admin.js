@@ -27,3 +27,5 @@ router.get("/supprimerarticle/{id}", adminController.supprimerArticle);
 router.get("/retraits", adminController.getRetraits);
 router.get("/validerRetrait/{id}", adminController.validerRetrait);
 router.get("/annulerRetrait/{id}", adminController.annulerRetrait);
+
+module.exports = router;

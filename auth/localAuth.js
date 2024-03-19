@@ -1,6 +1,8 @@
+const asyncHandler = require("express-async-handler");
 const Admin = require("../models/admin");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+
 passport.use(
   new LocalStrategy(
     {

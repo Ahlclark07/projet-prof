@@ -1,6 +1,12 @@
+"use strict";
 const asyncHandler = require("express-async-handler");
 const Admin = require("../models/admin");
+const Retrait = require("../models/retrait");
+const Article = require("../models/article");
+const Video = require("../models/video");
+const User = require("../models/user");
 const passport = require("../auth/localAuth");
+const { render } = require("../app");
 
 //auth
 exports.connexion = passport.authenticate("local", {
@@ -19,9 +25,10 @@ exports.deconnexion = function (req, res, next) {
 };
 
 // videos
-exports.getVideos = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: All Video GET");
-};
+exports.getVideos = asyncHandler(async function (req, res, next) {
+  const video = await Video.find().exec();
+  res.json(video);
+});
 exports.afficherFormulaireVideo = function (req, res, next) {
   res.send("NOT IMPLEMENTED: Form to add video");
 };
@@ -33,9 +40,10 @@ exports.supprimerVideo = function (req, res, next) {
 };
 // clients
 
-exports.getClients = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: All Client GET");
-};
+exports.getClients = asyncHandler(async function (req, res, next) {
+  const clients = await User.find().exec();
+  res.json(clients);
+});
 exports.activerClient = function (req, res, next) {
   res.send("NOT IMPLEMENTED: activer Client GET");
 };
@@ -44,11 +52,14 @@ exports.desactiverClient = function (req, res, next) {
 };
 // articles
 
-exports.getArticles = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: All articles GET");
-};
+exports.getArticles = asyncHandler(async function (req, res, next) {
+  const articles = await Article.find().exec();
+  res.json(articles);
+});
 exports.afficherFormulaireArticle = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: Form to add articles");
+  res.render("index", {
+    title: "Un titre ou bien ?",
+  });
 };
 exports.ajouterArticle = function (req, res, next) {
   res.send("NOT IMPLEMENTED: ajouter articles");
@@ -59,9 +70,10 @@ exports.supprimerArticle = function (req, res, next) {
 
 //retraits
 
-exports.getRetraits = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: All retraits GET");
-};
+exports.getRetraits = asyncHandler(async function (req, res, next) {
+  const retraits = await Retrait.find().exec();
+  res.json(retraits);
+});
 exports.validerRetrait = function (req, res, next) {
   res.send("NOT IMPLEMENTED: ajouter retrait");
 };

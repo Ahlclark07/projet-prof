@@ -45,7 +45,7 @@ exports.getClients = asyncHandler(async function (req, res, next) {
   res.json(clients);
 });
 exports.activerClient = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: activer Client GET");
+  res.json(req);
 };
 exports.desactiverClient = function (req, res, next) {
   res.send("NOT IMPLEMENTED: desactiver Client GET");
@@ -57,13 +57,14 @@ exports.getArticles = asyncHandler(async function (req, res, next) {
   res.json(articles);
 });
 exports.afficherFormulaireArticle = function (req, res, next) {
-  res.render("index", {
+  res.render("formulaire", {
     title: "Un titre ou bien ?",
   });
 };
-exports.ajouterArticle = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: ajouter articles");
-};
+exports.ajouterArticle = asyncHandler(async function (req, res, next) {
+  const article = await Article.create(req.body);
+  res.json(req.body);
+});
 exports.supprimerArticle = function (req, res, next) {
   res.send("NOT IMPLEMENTED: supprimer articles");
 };

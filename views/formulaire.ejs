@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    
+     <p>Welcome to <%= title %></p>
+      <form action="/admin/ajouterarticle" method="post">
+        <label> Titre : 
+          <input type="text" name="titre">
+        </label>
+        <label>Description : 
+
+          <input type="text" name="description">
+        </label>
+        <label>
+          Date de début :
+          <input type="date" name="date_de_debut">
+
+        </label>
+        <label>
+          Date de fin : 
+          <input type="date" name="date_de_fin">
+        </label>
+        <label>
+          Image :
+          <input type="file" name="image_url">
+
+        </label>
+        <label>Url : 
+
+          <input type="url" name="url">
+        </label>
+        
+        <input type="submit" value="Envoyer">
+      </form>
+  </body>
+</html>

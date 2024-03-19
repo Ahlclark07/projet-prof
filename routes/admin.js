@@ -1,6 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
+const multer = require("multer");
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + '-' + file.originalname);
+    },
+});
+const upload = multer({ storage: storage });
+
 
 //authentification
 router.post("/connexion", adminController.connexion);
@@ -20,7 +33,7 @@ router.get("/supprimervideo/{id}", adminController.supprimerVideo);
 //articles
 router.get("/articles", adminController.getArticles);
 router.get("/formulairearticle", adminController.afficherFormulaireArticle);
-router.post("/ajouterarticle", adminController.ajouterArticle);
+router.post("/ajouterarticle", upload.single("image") ,adminController.ajouterArticle);
 router.get("/supprimerarticle/{id}", adminController.supprimerArticle);
 
 //retraits

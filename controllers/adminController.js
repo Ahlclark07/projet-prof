@@ -6,7 +6,6 @@ const Article = require("../models/article");
 const Video = require("../models/video");
 const User = require("../models/user");
 const passport = require("../auth/localAuth");
-const { render } = require("../app");
 
 //auth
 exports.connexion = passport.authenticate("local", {

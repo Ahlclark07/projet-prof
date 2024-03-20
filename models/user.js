@@ -12,6 +12,7 @@ const userSchema = new Schema({
     required: true,
   },
   notificationLue: { type: Array, required: true },
+  actif: { type: Boolean, required: true, default: true },
 });
 
 const userModel = mongoose.model("users", userSchema);

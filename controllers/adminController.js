@@ -44,10 +44,12 @@ exports.getClients = asyncHandler(async function (req, res, next) {
   res.json(clients);
 });
 exports.activerClient = function (req, res, next) {
-  res.json(req);
+  const client = User.findOneAndUpdate({ _id: req.params.id }, { actif: true });
+  res.json(client);
 };
 exports.desactiverClient = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: desactiver Client GET");
+  const client = User.findOneAndUpdate({ _id: req.params.id }, { actif: true });
+  res.json(client);
 };
 // articles
 
@@ -56,7 +58,7 @@ exports.getArticles = asyncHandler(async function (req, res, next) {
   res.json(articles);
 });
 exports.afficherFormulaireArticle = function (req, res, next) {
-  res.render("formulaire", {
+  res.render("formulaireArticle", {
     title: "Un titre ou bien ?",
   });
 };

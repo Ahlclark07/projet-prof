@@ -61,12 +61,16 @@ exports.afficherFormulaireArticle = function (req, res, next) {
   });
 };
 exports.ajouterArticle = asyncHandler(async function (req, res, next) {
-  const article = await Article.create(req.body);
-  res.json(req.body);
+  const article = await Article.create({
+    ...req.body,
+    image_url: req.file.filename,
+  });
+  res.json(article);
 });
-exports.supprimerArticle = function (req, res, next) {
-  res.send("NOT IMPLEMENTED: supprimer articles");
-};
+exports.supprimerArticle = asyncHandler(async function (req, res, next) {
+  const article = await Article.findOneAndDelete({ _id: req.params.id });
+  res.send("success");
+});
 
 //retraits
 

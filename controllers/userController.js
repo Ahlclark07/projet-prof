@@ -7,7 +7,14 @@ const Portefeuille = require("../models/portefeuille");
   Supprimer la fonction creerUser et mettre en place la fonction connexion avec Google comme sur la doc
 
  */
-exports.creerUser = asyncHandler(async function (req, res, next) {
+// authentification
+exports.afficherFormulaireConnexion = function (req, res, next) {
+  res.send("NOT Implemented");
+};
+exports.afficherFormulaireInscription = function (req, res, next) {
+  res.send("NOT Implemented");
+};
+exports.inscription = asyncHandler(async function (req, res, next) {
   const portefeuille = await Portefeuille.create({
     montant: 0,
   });
@@ -22,6 +29,22 @@ exports.creerUser = asyncHandler(async function (req, res, next) {
     "User : " + user.nom + " avec le portefeuille à l'id : " + portefeuille._id
   );
 });
+
+exports.connexion = passport.authenticate("local", {
+  successReturnToOrRedirect: "/",
+  failureRedirect: "/page_connexion",
+  failureMessage: true,
+});
+
+exports.deconnexion = function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
+
 exports.makeRetrait = asyncHandler(function (req, res, next) {
   const montant = req.body.montant;
 

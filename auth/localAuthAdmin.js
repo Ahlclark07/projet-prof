@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const User = require("./models/user");
+const Admin = require("../models/admin");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -12,7 +12,7 @@ passport.use(
     asyncHandler(async (email, password, done) => {
       try {
         // Recherchez l'utilisateur dans la base de données par son email
-        const user = await User.findOne({ email });
+        const admin = await Admin.findOne({ email });
 
         // Si l'utilisateur n'existe pas, ou si le mot de passe est incorrect, retournez une erreur
         if (!admin || !admin.comparePassword(password)) {

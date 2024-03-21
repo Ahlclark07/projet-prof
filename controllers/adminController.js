@@ -5,7 +5,7 @@ const Retrait = require("../models/retrait");
 const Article = require("../models/article");
 const Video = require("../models/video");
 const User = require("../models/user");
-const passport = require("../auth/localAuth");
+const passport = require("../auth/localAuthAdmin");
 
 //auth
 exports.connexion = passport.authenticate("local", {

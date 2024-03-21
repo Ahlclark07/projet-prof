@@ -22,8 +22,9 @@ exports.creerUser = asyncHandler(async function (req, res, next) {
     "User : " + user.nom + " avec le portefeuille à l'id : " + portefeuille._id
   );
 });
+
+
 exports.makeRetrait = asyncHandler(function (req, res, next) {
   const montant = req.body.montant;
-
   res.send("NOT implemented");
 });
